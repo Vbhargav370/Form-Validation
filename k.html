@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+      <title>Page Validation</title>
+</head>
+<body>
+
+    <h1>Page Validation Demo</h1>
+
+    <!-- Registration Form -->
+    <form id="registrationForm">
+        <h2>Registration</h2>
+        Name : <input type="text" id="regName" placeholder="Full Name"><br>
+        Email: <input type="email" id="regEmail" placeholder="Email"><br>
+        Password: <input type="password" id="regPassword" placeholder="Password"><br>
+        <button type="button" onclick="validateRegistration()">Register</button><br>
+        <p id="regError" class="error"></p>
+    </form>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+        <h2>User Login</h2>
+        <input type="email" id="loginEmail" placeholder="Email">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button type="button" onclick="validateLogin()">Login</button>
+        <p id="loginError" class="error"></p>
+    </form>
+
+    <!-- User Profile Form -->
+    <form id="profileForm">
+        <h2>User Profile</h2>
+        <input type="text" id="profileName" placeholder="Name">
+        <input type="number" id="profileAge" placeholder="Age">
+        <button type="button" onclick="validateProfile()">Update Profile</button>
+        <p id="profileError" class="error"></p>
+    </form>
+
+    <!-- Payment Form -->
+    <form id="paymentForm">
+        <h2>Payment</h2>
+        <input type="text" id="cardNumber" placeholder="Credit Card Number">
+        <input type="text" id="cardCVV" placeholder="CVV">
+        <button type="button" onclick="validatePayment()">Pay</button>
+        <p id="paymentError" class="error"></p>
+    </form>
+
+    <script>
+        // Registration Validation
+        function validateRegistration() {
+            const name = document.getElementById('regName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const error = document.getElementById('regError');
+
+            if (!name || !email || !password) {
+                alert("All fields are required.");
+            } else {
+                alert("Registration successful!");
+            }
+        }
+
+        // Login Validation
+        function validateLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+
+            if (!email || !password) {
+                error.textContent = "Email and Password are required.";
+            } else {
+                error.textContent = "Login successful!";
+            }
+        }
+
+        // Profile Validation
+        function validateProfile() {
+            const name = document.getElementById('profileName').value;
+            const age = document.getElementById('profileAge').value;
+            const error = document.getElementById('profileError');
+
+            if (!name || !age || isNaN(age) || age <= 0) {
+                alert("Valid name and age are required.");
+            } else {
+                alert("Profile updated successfully!");
+            }
+        }
+
+        // Payment Validation
+        function validatePayment() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardCVV = document.getElementById('cardCVV').value;
+            const error = document.getElementById('paymentError');
+
+            if (!cardNumber || cardNumber.length !== 16 || isNaN(cardNumber) || !cardCVV || cardCVV.length !== 3 || isNaN(cardCVV)) {
+                alert("Enter valid card details.");
+            } else {
+                alert("Payment processed successfully!");
+            }
+        }
+    </script>
+</body>
+</html>
